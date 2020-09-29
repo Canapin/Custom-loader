@@ -1,0 +1,232 @@
+// This shouldn't change unless you want a more exotic loader
+.custom-loader-container {
+    position: relative;
+    margin: 20px 0 20px;
+    display: flex;
+    justify-content: center;
+}
+.bars-loader {
+    svg path,
+    svg rect{
+      fill: #333;
+    }
+}
+
+// Custom loader CSS
+.unicycle-loader {
+    $color: black;
+    $speed: 1.5s;
+    margin: 20px auto 20px auto;
+    position: relative;
+    transform: rotate(7.5deg) scale(0.70);
+    opacity: .2;
+    .saddle {
+      width: 50px;
+      height: 15px;
+      background-color: $color;
+      margin-left: 30px;
+      position: relative;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 20px;
+      transform: rotate(-5deg);
+      &:before {
+        content: "";
+        display: block;
+        width: 30px;
+        height: 20px;
+        background-color: $color;
+        border-radius: 50%;
+        position: absolute;
+        left: -5px;
+        top: -5px;
+      }
+      &:after {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 10px;
+        background-color: $color;
+        border-radius: 50%;
+        position: absolute;
+        right: -7px;
+        top: 1px;
+        transform: rotate(-35deg);
+      }
+    }
+    
+    .frame {
+      width: 7px;
+      height: 45px;
+      background: $color;
+      margin-left: 51px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 15px;
+      &:before {
+        content: "";
+        height: 75px;
+        width: 11px;
+        background: $color;
+        display: block;
+        position: relative;
+        top: 100%;
+        margin-left: -2px;
+      }
+    }
+    
+    .hub {
+      position: absolute;
+      bottom: calc(-100% - 30px);
+      left: calc(50% - 0.5px);
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $color;
+      border: 3px solid $color;
+      z-index: 2;
+    }
+    
+    .loader * {
+      box-sizing: border-box;
+    }
+    $tire_size: 1;
+    .wheel {
+      width: 110px;
+      height: 110px;
+      border: 10px solid $color;
+      border-radius: 50%;
+      position: relative;
+      animation: $speed rotate360 infinite linear;
+      box-sizing: border-box;
+      &:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        border: 12px dotted $color;
+        border-radius: 50%;
+        margin-left: -12px;
+        margin-top: -12px;
+        position: absolute;
+      }
+      &:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        border: 12px dotted $color;
+        border-radius: 50%;
+        margin-left: -12px;
+        margin-top: -12px;
+        position: absolute;
+        transform: rotate(12deg);
+      }
+    }
+    
+    .spoke {
+      top: 50%;
+      transform: translateY(-50%);
+      left: 50%;
+      transform: translateX(-50%);
+      position: absolute;
+      &:before {
+        left: 0;
+        content: "";
+        height: 1px;
+        width: 45px;
+        transform-origin: 20px center;
+        background: rgba(0,0,0,.5);
+        position: absolute;
+        transform: rotate(10deg);
+      }
+      &:after {
+        left: 0;
+        content: "";
+        height: 1px;
+        width: 45px;
+        transform-origin: 20px center;
+        background: rgba(0,0,0,.5);
+        position: absolute;
+        transform: rotate(10deg);
+        transform: rotate(-10deg);
+      }
+      &:nth-child(1) {
+        transform: rotate(30deg);
+      }
+      &:nth-child(2) {
+        transform: rotate(60deg);
+      }
+      &:nth-child(3) {
+        transform: rotate(90deg);
+      }
+      &:nth-child(4) {
+        transform: rotate(120deg);
+      }
+      &:nth-child(5) {
+        transform: rotate(150deg);
+      }
+      &:nth-child(6) {
+        transform: rotate(180deg);
+      }
+      &:nth-child(7) {
+        transform: rotate(210deg);
+      }
+      &:nth-child(8) {
+        transform: rotate(240deg);
+      }
+      &:nth-child(9) {
+        transform: rotate(270deg);
+      }
+      &:nth-child(10) {
+        transform: rotate(300deg);
+      }
+      &:nth-child(11) {
+        transform: rotate(330deg);
+      }
+      &:nth-child(12) {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .crank {
+      height: 4px;
+      width: 30%;
+      background: $color;
+      transform-origin: left 1px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      .pedal {
+        width: 20px;
+        height: 6px;
+        background: $color;
+        position: absolute;
+        right: -10px;
+        margin-top: -1px;
+        animation: $speed rotate360pedal infinite linear;
+      }
+      &.left {
+        transform: rotate(180deg);
+      }
+    }
+    
+    @keyframes rotate360 {
+      0% {
+        transform: rotate(-50deg);
+      }
+    
+      100% {
+        transform: rotate(310deg);
+      }
+    }
+    
+    @keyframes rotate360pedal {
+      0% {
+        transform: rotate(410deg);
+      }
+    
+      100% {
+        transform: rotate(50deg);
+      }
+    }
+}
